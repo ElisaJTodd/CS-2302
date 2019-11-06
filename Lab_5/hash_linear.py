@@ -180,10 +180,5 @@ class HashTableLP(object):
                 pos+=1
             return None
         elif c == "6":
-            pos = self.hFE(k,0)
-            while isinstance(self.item[pos], object):
-                if self.item[pos].word == k:
-                    return self.item[pos].emb
-                pos+=1
-            return None
+            return self.lookFe(k,0)
     
