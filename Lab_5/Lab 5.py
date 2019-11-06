@@ -86,7 +86,7 @@ def readIntoHashChain(size, choice):
                 #creates Word Embedding with information from file
                 n = WordEmbedding.WordEmbedding(word[0], word[1:])
                 #inserts on bst
-                h.insertPiSq(n)
+                h.insertFE(n)
                 content = ef.readline()
     print("Done")
     return h
@@ -180,7 +180,7 @@ def readIntoHashLP(size, choice):
                 #creates Word Embedding with information from file
                 n = WordEmbedding.WordEmbedding(word[0], word[1:])
                 #inserts on bst
-                h.insertPiSq(n)
+                h.insertFE(n)
                 cnt += 1
                 if cnt % 10000 == 0:
                     print(cnt)
@@ -195,8 +195,8 @@ def similaritiesHTC(T,c):
         #reads every line in the file
         while content:
             #separates words
-            word1 = htc.Embedding(T,content[0],c)
-            word2 = htc.Embedding(T,content[1],c)
+            word1 = T.Embedding(T,content[0],c)
+            word2 = T.Embedding(T,content[1],c)
             #returns similarities with similarities function
             sim = (np.dot(word1,word2))/(np.linalg.norm(word1)*np.linalg.norm(word2))
             #Prints values found
@@ -350,7 +350,7 @@ while(stay):
     elif (option == "3"):
         print("============ H.T. CHAINING ============")
         size = int(input("What size do you want the table?\n"))
-        choice = (input("Which way to store?\n\t1)length of string\n\t2)ascii value\n\t3)product of ascii\n\t4)sum of ascii\n\t5)recursive formula\n\t6)Multiply by Pi and square it\n"))
+        choice = (input("Which way to store?\n\t1)length of string\n\t2)ascii value\n\t3)product of ascii\n\t4)sum of ascii\n\t5)recursive formula\n\t6)First embedding\n"))
     
         #call to method and time 
         start = time.time()
@@ -372,7 +372,7 @@ while(stay):
     elif (option == "4"):
         print("========= H.T. LINEAR PROBING =========")
         size = int(input("What size do you want the table?\n"))
-        choice = (input("Which way to store?\n\t1)length of string\n\t2)ascii value\n\t3)product of ascii\n\t4)sum of ascii\n\t5)recursive formula\n\t6)Multiply by Pi and square it\n"))
+        choice = (input("Which way to store?\n\t1)length of string\n\t2)ascii value\n\t3)product of ascii\n\t4)sum of ascii\n\t5)recursive formula\n\t6)First embedding\n"))
     
         #call to method and time
         start = time.time()

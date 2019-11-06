@@ -80,14 +80,14 @@ class HashTableLP(object):
                 return pos
         return -1
     
-    def hPS(self,k,i):
-        return ((round(ord(k.word[0])*3.1416)//(ord(k.word[-1])*3.1416))+i)%len(self.item)
+    def hFE(self,k,i):
+        return int((round(k.emb[0]*10000)+i)%len(self.bucket))
             
-    def insertPiSq(self,k):
+    def insertFE(self,k):
         # Inserts k in table unless table is full
         # Returns the position of k in self, or -1 if k could not be inserted
         for i in range(len(self.item)): #Despite for loop, running time should be constant for table with low load factor
-            pos = self.hPS(k,i)
+            pos = self.hFE(k,i)
             if isinstance(self.item[pos], int):
                 self.item[pos] = k
                 return pos
@@ -173,7 +173,7 @@ class HashTableLP(object):
                 pos+=1
             return None
         elif c == "6":
-            pos = self.hPS(k,0)
+            pos = self.hFE(k,0)
             while isinstance(self.item[pos], object):
                 if self.item[pos].word == k:
                     return self.item[pos].emb

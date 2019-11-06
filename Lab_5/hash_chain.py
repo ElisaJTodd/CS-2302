@@ -89,13 +89,20 @@ class HashTableChain(object):
             self.bucket[b]=new
             #self.bucket[b].append(k)         #Insert new item at the end    
             
-    def hPS(self,k):
-        return round((ord(k.word[0])*3.1416)//(ord(k.word[-1])*3.1416))%len(self.bucket)    
+    def hFE(self,k):
+        return int(round(k.emb[0]*10000)%len(self.bucket))
     
-    def insertPiSq(self,k):
+    def lookFe(self,k):
+        for i in self.bucket:
+            for j in i:
+                if j.word == k:
+                    return j.emb
+        return None
+    
+    def insertFE(self,k):
         # Inserts k in appropriate bucket (list) 
         # Does nothing if k is already in the table
-        b = self.hPS(k)
+        b = self.hFE(k)
         if not k in self.bucket[b]:
             new = [k]
             for i in self.bucket[b]:
@@ -152,8 +159,5 @@ class HashTableChain(object):
                 if i.word == k:
                     return i.emb
         elif c == "6":
-            b = self.hPS(k)
-            for i in self.bucket[b]:
-                if i.word == k:
-                    return i.emb
+            return self.lookFe(k)
         return None #k was not found
