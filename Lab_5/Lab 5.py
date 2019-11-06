@@ -27,7 +27,7 @@ def readIntoHashChain(size, choice):
         with open(embed_file, encoding="utf8") as ef:
             content = ef.readline()
             #goes through every line on the file
-            while content:
+            for i in range(10000):
                 word = content.split()
                 #creates Word Embedding with information from file
                 n = WordEmbedding.WordEmbedding(word[0], word[1:])
@@ -38,7 +38,7 @@ def readIntoHashChain(size, choice):
         with open(embed_file, encoding="utf8") as ef:
             content = ef.readline()
             #goes through every line on the file
-            while content:
+            for i in range(10000):
                 word = content.split()
                 #creates Word Embedding with information from file
                 n = WordEmbedding.WordEmbedding(word[0], word[1:])
@@ -49,7 +49,7 @@ def readIntoHashChain(size, choice):
         with open(embed_file, encoding="utf8") as ef:
             content = ef.readline()
             #goes through every line on the file
-            while content:
+            for i in range(10000):
                 word = content.split()
                 #creates Word Embedding with information from file
                 n = WordEmbedding.WordEmbedding(word[0], word[1:])
@@ -60,7 +60,7 @@ def readIntoHashChain(size, choice):
         with open(embed_file, encoding="utf8") as ef:
             content = ef.readline()
             #goes through every line on the file
-            while content:
+            for i in range(10000):
                 word = content.split()
                 #creates Word Embedding with information from file
                 n = WordEmbedding.WordEmbedding(word[0], word[1:])
@@ -71,7 +71,7 @@ def readIntoHashChain(size, choice):
         with open(embed_file, encoding="utf8") as ef:
             content = ef.readline()
             #goes through every line on the file
-            while content:
+            for i in range(10000):
                 word = content.split()
                 #creates Word Embedding with information from file
                 n = WordEmbedding.WordEmbedding(word[0], word[1:])
@@ -81,7 +81,7 @@ def readIntoHashChain(size, choice):
         with open(embed_file, encoding="utf8") as ef:
             content = ef.readline()
             #goes through every line on the file
-            while content:
+            for i in range(10000):
                 word = content.split()
                 #creates Word Embedding with information from file
                 n = WordEmbedding.WordEmbedding(word[0], word[1:])
@@ -98,84 +98,65 @@ def readIntoHashLP(size, choice):
         with open(embed_file, encoding="utf8") as ef:
             content = ef.readline()
             #goes through every line on the file
-            cnt = 0
-            while content:
+            for i in range(10000):
                 word = content.split()
                 #creates Word Embedding with information from file
                 n = WordEmbedding.WordEmbedding(word[0], word[1:])
                 #inserts on bst
-                h.insertString(n)
-                cnt += 1
-                if cnt % 10000 == 0:
-                    print(cnt)
+                h.insertS(n)
                 content = ef.readline()
                 
     elif choice == "2":
         with open(embed_file, encoding="utf8") as ef:
             content = ef.readline()
-            #goes through every line on the file
-            cnt = 0
-            while content:
+            #goes through every line
+            for i in range(10000):
                 word = content.split()
                 #creates Word Embedding with information from file
                 n = WordEmbedding.WordEmbedding(word[0], word[1:])
                 #inserts on bst
                 h.insertAscii(n)
-                cnt += 1
-                if cnt % 10000 == 0:
-                    print(cnt)
                 content = ef.readline()
     elif choice == "3":
         with open(embed_file, encoding="utf8") as ef:
             content = ef.readline()
-            #goes through every line on the file
-            cnt = 0
-            while content:
+            #goes through every line
+            for i in range(10000):
                 word = content.split()
                 #creates Word Embedding with information from file
                 n = WordEmbedding.WordEmbedding(word[0], word[1:])
                 #inserts on bst
                 h.insertPAscii(n)
-                cnt += 1
-                if cnt%5000==0:
-                    print(cnt)
                 content = ef.readline()
                 
     elif choice == "4":
         with open(embed_file, encoding="utf8") as ef:
             content = ef.readline()
             #goes through every line on the file
-            cnt = 0
-            while content:
+            for i in range(10000):
                 word = content.split()
                 #creates Word Embedding with information from file
                 n = WordEmbedding.WordEmbedding(word[0], word[1:])
                 #inserts on bst
                 h.insertSAscii(n)
-                cnt += 1
-                if cnt % 1000 == 0:
-                    print(cnt)
                 content = ef.readline()
     elif choice == "5":
         with open(embed_file, encoding="utf8") as ef:
             content = ef.readline()
             #goes through every line on the file
-            cnt = 0
-            while content:
+            for i in range(10000):
                 word = content.split()
                 #creates Word Embedding with information from file
                 n = WordEmbedding.WordEmbedding(word[0], word[1:])
                 #inserts on bst
                 h.insertRecursive(n)
-                cnt += 1
-                if cnt % 10000 == 0:
-                    print(cnt)
+                content = ef.readline()
     elif choice == "6":
         with open(embed_file, encoding="utf8") as ef:
             content = ef.readline()
             #goes through every line on the file
             cnt = 0
-            while content:
+            for i in range(10000):
                 word = content.split()
                 #creates Word Embedding with information from file
                 n = WordEmbedding.WordEmbedding(word[0], word[1:])
@@ -211,8 +192,8 @@ def similaritiesHTLP(T,c):
         #reads every line in the file
         while content:
             #separates words
-            word1 = htlp.Embedding(T,content[0],c)
-            word2 = htlp.Embedding(T,content[1],c)
+            word1 = T.Embedding(T,content[0],c)
+            word2 = T.Embedding(T,content[1],c)
             #returns similarities with similarities function
             sim = (np.dot(word1,word2))/(np.linalg.norm(word1)*np.linalg.norm(word2))
             #Prints values found

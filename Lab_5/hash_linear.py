@@ -51,7 +51,7 @@ class HashTableLP(object):
     
     def hSA(self,k,j):
         sum=0
-        for i in k.word:
+        for i in k:
             sum += ord(i)
         return (sum+j)%len(self.item) 
             
@@ -59,7 +59,7 @@ class HashTableLP(object):
         # Inserts k in table unless table is full
         # Returns the position of k in self, or -1 if k could not be inserted
         for i in range(len(self.item)): #Despite for loop, running time should be constant for table with low load factor
-            pos = self.hSA(k,i)
+            pos = self.hSA(k.word,i)
             if isinstance(self.item[pos], int):
                 self.item[pos] = k
                 return pos
@@ -68,21 +68,27 @@ class HashTableLP(object):
     def hR(self,k,i):
         if len(k) == 0:
             return 1            
-        return ((ord(k[0]) + 255*self.hR(k[1:]))+i)%len(self.item)
+        return ((ord(k[0]) + 255*self.hR(k[1:],i))+i)%len(self.item)
             
     def insertRecursive(self,k):
         # Inserts k in table unless table is full
         # Returns the position of k in self, or -1 if k could not be inserted
         for i in range(len(self.item)): #Despite for loop, running time should be constant for table with low load factor
-            pos = self.hR(k,i)
+            pos = self.hR(k.word,i)
             if isinstance(self.item[pos], int):
                 self.item[pos] = k
                 return pos
         return -1
     
     def hFE(self,k,i):
-        return int((round(k.emb[0]*10000)+i)%len(self.bucket))
-            
+        return int((round(k.emb[0]*10000)+i)%len(self.item))
+        
+    def lookFe(self,k):
+        for i in self.item:
+            if i.word == k:
+                    return i.emb
+        return None    
+        
     def insertFE(self,k):
         # Inserts k in table unless table is full
         # Returns the position of k in self, or -1 if k could not be inserted
@@ -117,7 +123,8 @@ class HashTableLP(object):
     
     def print_table(self):
         print('Table contents:')
-        print(self.item.word)
+        for i in self.item:
+            print(i.word)
         
     def load_factor(self):
         length =0

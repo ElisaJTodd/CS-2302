@@ -58,14 +58,14 @@ class HashTableChain(object):
 
     def hSA(self,k):
         sum=0
-        for i in k.word:
+        for i in k:
             sum += ord(i)
         return sum%len(self.bucket)    
     
     def insertSAscii(self,k):
         # Inserts k in appropriate bucket (list) 
         # Does nothing if k is already in the table
-        b = self.hSA(k)
+        b = self.hSA(k.word)
         if not k in self.bucket[b]:
             new = [k]
             for i in self.bucket[b]:
