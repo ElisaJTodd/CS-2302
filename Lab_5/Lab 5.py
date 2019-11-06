@@ -6,7 +6,7 @@ ASSIGNMENT: Lab 5 - Hash Tables
 INSTRUCTOR: Olac Fuentes
 TA: Anindita Nath
 DATE: 11/01/2019
-Program: --------------------
+Program: Stores into hash tables linearly or by chaining
 """
 import hash_linear as htlp
 import hash_chain as htc
@@ -367,7 +367,7 @@ while(stay):
         start = time.time()
         similaritiesHTC(table, choice)
         end = time.time()
-        print("Running time for B-tree query processing (with size = ", size, "): "+"{:.2f}".format(end-start) + " seconds.")
+        print("Running time for HT query processing (with size = ", size, "): "+"{:.2f}".format(end-start) + " seconds.")
     
     elif (option == "4"):
         print("========= H.T. LINEAR PROBING =========")
@@ -389,11 +389,11 @@ while(stay):
         start = time.time()
         similaritiesHTLP(table,choice)
         end = time.time()
-        print("Running time for B-tree query processing (with size = ", size, "): "+"{:.2f}".format(end-start) + " seconds.")
+        print("Running time for HT query processing (with size = ", size, "): "+"{:.2f}".format(end-start) + " seconds.")
             
     #Exit
     elif (option == "5"):
         print("Thank you for using this program! Goodbye!")
         stay = False
     else:
-        print("Choose 1, 2 or 3.")
+        print("Choose 1, 2, 3, 4 or 5.")
